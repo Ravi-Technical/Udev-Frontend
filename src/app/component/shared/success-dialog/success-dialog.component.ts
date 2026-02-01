@@ -21,7 +21,9 @@ export class SuccessDialogComponent implements OnInit {
   constructor(private snakbarS: SnakbarMessageService, public dialogRef: MatDialogRef<SuccessDialogComponent>,
 
     @Inject(MAT_DIALOG_DATA) public data: { title: string, message: string, extraButton?: string, type?: string }) {
+
     this.data.type = this.data.type || 'primary'; // By Default type
+    
   }
 
   ngOnInit(): void {

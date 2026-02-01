@@ -52,7 +52,6 @@ export class CourseDetailsComponent implements OnInit {
   }
   // Add to Cart
   addToCart(item:ICourseModel){
-    debugger
      this.dataSource.addToCartCourse(item);
      this.courseFlagUpdate();
   }

@@ -37,7 +37,7 @@ export class CartComponent implements OnInit {
     matRef.afterClosed().subscribe((res) => {
       if (res) {
         this.dataSource.removeCourseFromCart(id);
-      this.getLocalCourses();
+        this.getLocalCourses();
       }
     })
   }
