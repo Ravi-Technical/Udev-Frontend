@@ -1,0 +1,19 @@
+<section class="testimonial-section">
+  <h2 class="title">What our learners say</h2>
+  <p class="subtitle">Trusted by millions of students worldwide</p>
+
+  <div class="testimonial-grid">
+    <div class="card" *ngFor="let t of testimonials">
+      <div class="quote">“</div>
+      <p class="message">{{ t.message }}</p>
+
+      <div class="user">
+        <img [src]="t.avatar" alt="user" />
+        <div>
+          <h4>{{ t.name }}</h4>
+          <span>{{ t.role }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

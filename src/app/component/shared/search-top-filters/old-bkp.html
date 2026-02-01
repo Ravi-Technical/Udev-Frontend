@@ -1,0 +1,49 @@
+<div class="filter-dropdown" style="display: none;">
+    <!-------------------------------------------------- Rating Trigger ----------------------------------------------->
+    <button mat-button [matMenuTriggerFor]="ratingMenu" class="filter-chip">
+        <span class="filter-label">
+            {{ selectedRatingLabel ? selectedRatingLabel : 'Rating' }}
+        </span>
+        <span class="badge">
+            @if(selectedRatingCount > 0){
+            {{ selectedRatingCount }}
+            }
+            <mat-icon>expand_more</mat-icon>
+        </span> 
+    </button>
+    <!-- Rating Dropdown -->
+    <mat-menu #ratingMenu="matMenu" class="level-menu">
+        <div class="menu-scroll">
+            <mat-checkbox *ngFor="let rating of ratings" [checked]="selectedLevels.includes(rating.Value)"
+                (change)="toggleLevel(rating.Value, rating, $event)" class="level-option">
+                {{ rating.Value }}
+                <span class="count">({{ rating.Count }})</span>
+            </mat-checkbox>
+        </div>
+    </mat-menu>
+    <!--------------------------------------------------- Level Trigger ----------------------------------------------->
+    <button mat-button [matMenuTriggerFor]="levelMenu" class="filter-chip">
+        <span class="filter-label">
+            {{ selectedLevelsLabel ? selectedLevelsLabel : 'Levels' }}
+        </span>
+        <span class="badge">
+            @if(selectedLevelsCount > 0){
+            {{ selectedLevelsCount }}
+            }
+            <mat-icon>expand_more</mat-icon>
+        </span> 
+    </button>
+    <!-- Level Dropdown -->
+    <mat-menu #levelMenu="matMenu" class="level-menu">
+        <div class="menu-scroll">
+            <mat-checkbox *ngFor="let level of levels" [checked]="selectedLevels.includes(level.Value)"
+                (change)="toggleLevel(level.Value, level, $event)" class="level-option">
+                {{ level.Value }}
+                <span class="count">({{ level.Count }})</span>
+            </mat-checkbox>
+        </div>
+    </mat-menu>
+</div> <!--- END MAIN WRAPER CLASS HERE  --->
+
+
+

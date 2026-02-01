@@ -1,0 +1,86 @@
+<!-- <section class="course_wraper">
+    <div class="container">
+        <div class="col-lg-12">
+            <h4>Skills to transform your career and life</h4>
+            <p>From critical skills to technical topics, Udev supports your professional development.</p>
+        </div>
+        <div class="col-lg-12">
+            <mat-tab-group>
+                <mat-tab label="First"> Content 1 </mat-tab>
+                <mat-tab label="Second"> Content 2 </mat-tab>
+                <mat-tab label="Third"> Content 3 </mat-tab>
+            </mat-tab-group>
+        </div>
+        <div class="row">
+            <div class="col-lg-4" *ngFor="let course of storeWholeCourse">
+                <div class="course-card" (click)="goToDetailsPage(course)">
+                    <img src="{{course.thumbnailImage}}" alt="course.title" />
+                    <h5>{{course.title}}</h5>
+                    <figcaption class="rating-box">
+                        <span class="rating">
+                            <mat-icon>star</mat-icon>
+                            <span class="rating-number">{{course.ratings}}</span>
+                        </span>
+                        <span class="price">${{course.price}}</span>
+                    </figcaption>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<div class="container wraperCourse">
+    <h4>Skills to transform your career and life</h4>
+    <p>From critical skills to technical topics, Udev supports your professional development.</p>
+    <div class="category-wraper">
+        <mat-tab-group (selectedTabChange)="onTabChange($event)">
+            @for (category of storeWholeCategory; track category.id) {
+            <mat-tab label="{{category.categoryName}}"></mat-tab>
+            }
+        </mat-tab-group>
+    </div>
+    <!-- Change Category According Tab -->
+    @if (isDataReady && filtredCourse.length > 0 ){
+    <p-carousel class="my-carousel" [value]="filtredCourse" trackBy="trackByCourseId" [numVisible]="3" [numScroll]="3" [circular]="true"
+        [responsiveOptions]="responsiveOptions">
+        <ng-template let-course #item let-i="index">
+            <div class="course-card" (click)="goToDetailsPage(course)">
+                <img src="{{course.thumbnailImage}}" alt="course.title" />
+                <h5>{{course.title | slice:0:40}} {{course.title.length > 40 ? '...' : ''}}</h5>
+                <p class="course-desc">
+                    {{course.description | slice:0:50}} {{course.description.length > 50 ? '...':''}}
+                </p>
+                <figcaption class="rating-box">
+                    <span class="rating">
+                        <mat-icon>star</mat-icon>
+                        <span class="rating-number">{{course.ratings}}</span>
+                    </span>
+                    <span class="price">${{course.price}}</span>
+                </figcaption>
+            </div>
+        </ng-template>
+    </p-carousel>
+    }
+    @else {
+    <div class="placeholder-box">
+        <h3>Course not available</h3>
+    </div>
+    }
+     
+    <!-- @placeholder {
+    @if (filtredCourse.length == 0 && !isCourseFlag) {
+    <div class="notFound">
+        <h4><strong>Course not available</strong></h4>
+    </div>
+    } @else {
+    <div class="placeholder-box">
+        <h3>Select a category to load courses</h3>
+    </div>
+    }
+    }
+    @loading {
+    <div class="loading-skeleton text-center mt-4">
+        <h4><strong>Loading courses...</strong></h4>
+    </div>
+    } -->
+</div>
+ 

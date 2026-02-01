@@ -1,0 +1,143 @@
+.course-list-container {
+  margin: 20px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden !important;
+}
+
+mat-toolbar {
+  font-weight: bold;
+  justify-content: center;
+  display: flex;
+  gap: 81%;
+  background-color:#44096d;
+  color: #fff;
+}
+
+table {
+  width: 100%;
+}
+button.addCourse {
+    border: none;
+    font-size: 12px;
+    padding: 4px 1rem;
+    background-color: #6d18a8;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    font-weight: 500;
+}
+
+.no-data {
+  text-align: center;
+  padding: 30px;
+  color: #777;
+
+  mat-icon {
+    font-size: 40px;
+    display: block;
+    margin: 10px auto;
+  }
+}
+
+.mat-elevation-z8 {
+  overflow-x: auto;
+  /* ✅ enables horizontal scroll */
+  overflow-y: auto;
+  display: block;
+  white-space: nowrap;
+}
+
+.truncate-text {
+  display: inline-block;
+  max-width: 220px;
+  /* Adjust per column */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.course-list-container.mat-elevation-z8 img {
+  width: 50px;
+}
+
+span {
+  font-size: 12px;
+}
+
+
+video {
+  width: 100px;
+  min-height: 74px;
+  max-height: 74px;
+}
+
+td:nth-child(1) .truncate-text {
+  max-width: 200px;
+}
+
+/* title */
+td:nth-child(2) .truncate-text {
+  max-width: 250px;
+}
+
+/* description */
+td:nth-child(3) .truncate-text {
+  max-width: 100px;
+}
+
+/* Video */
+td:nth-child(5) .truncate-text {
+  max-width: 100px;
+}
+
+/* Video */
+
+img.img-wrap {
+    width: 40px;
+    border: 1px solid #ddd;
+    padding: 2px;
+}
+
+mat-toolbar.mat-toolbar.title-wrap.mat-toolbar-single-row span {
+  font-size: 1.5rem;
+}
+span.status {
+    padding: 3px 8px;
+    border-radius: 2px;
+}
+
+section.wraper_table {
+    padding: 2rem 0;
+}
+
+.wraper {
+    display: flex;
+    justify-content: space-around;
+    gap: 77%;
+    margin-bottom: 1.5rem;
+    background-color: #66159e;
+    color: #fff;
+    padding: 15px 0;
+    border-radius: 2px;
+}
+.wraper h3 {
+    margin: 0;
+}
+button.btn.btn-primary {
+    background-color: #7f19c6;
+    border: none;
+    font-size: 14px;
+}
+
+
+.ag-cell.actions-cell {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center; /* Optional */
+  padding: 0 !important;
+}
+
+
+

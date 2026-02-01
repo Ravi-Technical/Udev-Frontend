@@ -1,0 +1,16 @@
+<div class="card">
+    <p-galleria 
+    class="hero-galleria"
+    [value]="sliders" 
+    [numVisible]="1" 
+    [autoPlay]="true" 
+    [circular]="true" 
+    [showItemNavigators]="true" 
+    [showThumbnails]="false" 
+    [responsiveOptions]="responsiveOptions" 
+    [containerStyle]="{ height: '350px', 'max-width': '1920px' }">
+        <ng-template #item let-item>
+            <img [src]="item.imageUrl" [alt]="item.altTag" style="width: 100%; display: block;" />
+        </ng-template>
+    </p-galleria>
+</div>

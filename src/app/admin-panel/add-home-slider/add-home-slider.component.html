@@ -1,0 +1,104 @@
+<div class="container-wraper">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form_wraper">
+                    <form [formGroup]="addSliderFrom">
+                        <mat-card>
+                            <h2 class="table-title">
+                                {{isEditMode ? 'Update Slider' : 'Add Slider'}}
+                                <button id="addCat" *ngIf="isEditMode" mat-raised-button color="primary"
+                                    (click)="goToAddSlider()"> Add Slider </button>
+                            </h2>
+                            <mat-card-content>
+                                <div class="form-grid">
+                                    <!-- Slider Name -->
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Slider Name</mat-label>
+                                        <input matInput formControlName="alt_Tag" placeholder="Enter slider name"
+                                            required>
+                                        <mat-error *ngIf="catFormGet['alt_Tag'].errors?.['required']">Category is
+                                            required.</mat-error>
+                                    </mat-form-field>
+                                    <!-- Slider Name -->
+                                    <div class="imageUploading"> 
+                                        <button mat-raised-button color="primary" (click)="fileInput.click()">
+                                            Choose Image
+                                        </button>
+                                        <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden #fileInput />
+                                        <img *ngIf="ImagePreview" [src]="ImagePreview" alt="Uploaded Slider Image" />
+                                        <img *ngIf="!ImagePreview" src="dummy-image.jpg" alt="Upload Slider Image" />
+
+                                        <!-- <mat-error *ngIf="catFormGet['sliderName'].errors?.['required']">Category is
+                                            required.</mat-error> -->
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button *ngIf="isEditMode" mat-raised-button color="primary" (click)="updateCategory()"
+                                    [disabled]="addSliderFrom.invalid"> Update Slider </button>
+                                <button *ngIf="!isEditMode" mat-raised-button color="primary" (click)="addSlider()"
+                                    [disabled]="addSliderFrom.invalid"> Save Slider </button>
+                                <button mat-button color="warn" type="reset">Reset</button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </form>
+                </div>
+            </div>
+            <!---------------------------------------- List of category ------------------------------------------>
+            <div class="col-lg-6">
+                <div class="category-table-container mat-elevation-z4">
+                    <h2 class="table-title">Slider List</h2>
+                    <h3 *ngIf="dataSource.data.length == 0">Data not available</h3>
+                    <table *ngIf="dataSource.data.length > 0" mat-table [dataSource]="dataSource" matSort
+                        class="mat-elevation-z2">
+                        <!-- Index Column -->
+                        <ng-container matColumnDef="index">
+                            <th mat-header-cell *matHeaderCellDef>#</th>
+                            <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+                        </ng-container>
+                        <!-- Slider Url Column -->
+                        <ng-container matColumnDef="imageUrl">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
+                            <td mat-cell *matCellDef="let element">
+                                <img src="{{element.imageUrl}}" alt="{{ element.altTag }}" />
+                            </td>
+                        </ng-container>
+                        <!-- Slider Name Column -->
+                        <ng-container matColumnDef="sliderName">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                            <td mat-cell *matCellDef="let element">{{ element.altTag }}</td>
+                        </ng-container>
+                        <!-- Created Date Column -->
+                        <ng-container matColumnDef="createdAt">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Created At</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{ element.datetime | date: 'mediumDate' }}
+                            </td>
+                        </ng-container>
+                        <!-- Actions Column -->
+                        <ng-container matColumnDef="actions">
+                            <th mat-header-cell *matHeaderCellDef>Actions</th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-icon-button matTooltip="Edit Category" (click)="onEdit(element)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+
+                                <button mat-icon-button matTooltip="Delete Category" (click)="onDelete(element)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </ng-container>
+                        <!-- Table Headers & Rows -->
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                    </table>
+                    <!-- Paginator -->
+                    <!-- <ng-container *ngIf="dataSource.data.length > 0"> -->
+                    <mat-paginator [pageSizeOptions]="[4, 8, 16]" showFirstLastButtons></mat-paginator>
+                    <!-- </ng-container> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

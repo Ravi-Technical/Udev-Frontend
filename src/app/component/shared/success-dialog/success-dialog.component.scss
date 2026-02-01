@@ -1,0 +1,74 @@
+.success-dialog {
+  text-align: center;
+  background-color: #ffffff; 
+}
+.success-dialog h2 {
+    background-color: #5e1d99;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    margin-bottom: 1.2rem;
+}
+.close-icon {
+    font-size: 28px;
+    color: #fff;
+    background-color: red;
+    padding: 6px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+}
+
+.mat-mdc-dialog-container {
+  border-radius: 4px; // Angular Material default
+}
+
+.success-dialog {
+    background-color: #ffffff;
+    height: 12rem;
+}
+
+.mat-icon {
+    overflow: hidden;
+}
+
+button{box-shadow: none !important;}
+
+ .btn-success {
+  background-color: #4caf50;
+  color: #fff;
+}
+.success-dialog p {
+    padding: 0 1rem;
+    font-size: 14px;
+}
+
+.btn-error {
+  background-color: #f44336 !important;
+  color: #fff;
+}
+
+.btn-warning {
+  background-color: #ff9800 !important;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #5e1d99 !important;
+  color: #fff;
+}
+
+button .mdc-button__label {
+    color: #fff !important;
+}
+#cancelBtn { background-color: #de4e4e;color: #fff;}
+
+:host ::ng-deep .mdc-dialog__surface {
+  border-radius: 2px !important;
+  overflow: hidden !important;
+}
+

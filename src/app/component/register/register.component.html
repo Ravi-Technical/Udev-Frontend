@@ -1,0 +1,43 @@
+<div class="register-container">
+  <mat-card class="register-card mat-elevation-z8">
+    <mat-card-header>
+      <mat-card-title class="title">Create Account</mat-card-title>
+      <mat-card-subtitle class="subtitle">Join us and start learning 🚀</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <form [formGroup]="UdemyRegForm" (ngSubmit)="uRegSubmit()">
+        <!-- Full Name -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Full Name</mat-label>
+          <input matInput placeholder="John Doe" formControlName="fullName"/>
+          <mat-error *ngIf="UdemyRegForm.get('fullName')?.hasError('required')">
+             Full Name is required
+          </mat-error>
+        </mat-form-field>
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="example@email.com" formControlName="email" />
+          <mat-error *ngIf="UdemyRegForm.get('email')?.hasError('required')">
+            Email address required
+          </mat-error>
+          <mat-error *ngIf="UdemyRegForm.get('email')?.hasError('email')">
+            Please enter valid email address
+          </mat-error>
+        </mat-form-field>
+        <!-- Signup Button -->
+        <button mat-raised-button [disabled]="UdemyRegForm.invalid" class="btn-green full-width mt-3">
+          Sign Up
+        </button>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions class="actions">
+      <p>
+        Already have an account?
+        <a routerLink="/udemy/login">Login</a>
+      </p>
+    </mat-card-actions>
+  </mat-card>
+</div>

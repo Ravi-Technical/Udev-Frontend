@@ -1,0 +1,13 @@
+<div class="success-dialog">
+  <!-- <mat-icon (click)="closeDialog()" class="close-icon">close_circle</mat-icon> -->
+  <h2>{{data.title}}</h2>
+  <p>{{ data.message }}</p>
+  <button [ngClass]="{
+    'btn-success':data.type==='success',
+    'btn-error':data.type==='error', 
+    'btn-warning':data.type==='warning',
+    'btn-primary':data.type==='primary'
+   }"
+   mat-raised-button color="primary" (click)="closeDialog()">OK</button> &nbsp; &nbsp;
+  <button *ngIf="data.extraButton" id="cancelBtn" mat-raised-button color="primary" (click)="cancelDialog()">{{data.extraButton}}</button>
+</div>

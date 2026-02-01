@@ -1,0 +1,38 @@
+.empty-state {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 16px;
+  color: #4b4b4b;
+}
+
+.empty-state img {
+  width: 220px;
+  max-width: 80%;
+  margin-bottom: 24px;
+}
+
+.empty-state h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  max-width: 420px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #6a6f73;
+}
+
+.gotoHome{
+    margin: 0 20px 0 20px;
+    background-color: #5f1ebd;
+    padding: 6px 15px;
+    color: white;
+    border: 1px solid #5f1ebd;
+    border-radius: 2px;
+}

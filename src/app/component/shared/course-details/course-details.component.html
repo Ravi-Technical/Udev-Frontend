@@ -1,0 +1,47 @@
+<section class="wraper-top" *ngIf="course">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="inner-details">
+                    <ul class="breadcrume">
+                        <li>Course > {{categoryTitle}} > {{course?.title}}</li>
+                    </ul>
+                    <h1>{{course?.title}}</h1>
+                    <p>{{course?.description}}</p>
+                    <p class="yellow">
+                        <mat-icon>star</mat-icon>
+                        <span class="rating">{{course?.ratings}}</span>
+                    </p>
+                    <span class="createdBy"> <mat-icon>person</mat-icon> Created by <b>{{course?.instructors}}</b>
+                        &nbsp; &nbsp; <mat-icon>language</mat-icon> {{course?.language}}
+                        <br>
+                        <mat-icon>access_time</mat-icon> Last Updated - {{course?.lastUpdate | date }}
+                    </span>
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="thumbnail">
+                    <img src="{{course?.thumbnailImage}}" />
+                    <figcaption>
+                        <ul>
+                            <li>${{course?.price}}</li>
+                            <li class="rating-color"><mat-icon>star</mat-icon> {{course?.ratings}}</li>
+                        </ul>
+                        <!-- Add to cart (Filled button) -->
+                        <button *ngIf="!courseFlag" mat-raised-button class="btn-primary" (click)="addToCart(course)">
+                            Add to cart
+                        </button>
+                        <button *ngIf="courseFlag" mat-raised-button class="btn-primary" (click)="goToCart()">
+                            Go to cart
+                        </button>
+                        <!-- Buy now (Outlined button) -->
+                        <button mat-stroked-button (click)="goToCheckOut()" class="btn-outline">
+                            Buy now
+                        </button>
+                    </figcaption>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,149 @@
+<section class="wraper-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-9">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a routerLink="/">
+            <img class="navbar-brand" src="udev-logo.png" alt="Udemy Logo" />
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="javascript:void()">Explore</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Plans & Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" tabindex="-1" aria-disabled="false">Udemy Business</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" tabindex="-1" aria-disabled="false">Tech on Udemy</a>
+              </li>
+            </ul>
+            <div class="searchBar">
+              <form class="d-flex">
+                <!-- <i class="bi bi-search"></i> -->
+                <input #searchInput class="form-control me-2" type="text" (keyup.enter)="onSearch(searchInput.value)" placeholder="Search" aria-label="Search">
+                <!-- <button class="commnClass color" (click)="onSearch()">Search</button> -->
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="col-lg-3">
+        <!------------------------------------------ Default Accessible Menu --------------------------------------->
+        <div class="loginArea" *ngIf="!this.commonService.isLoggedIn()">
+          <span class="cart" (click)="goToCart()"><i class="bi bi-cart2"></i>
+            <strong *ngIf="dataSource.getCartCourse().length > 0"> {{dataSource.cartCount | async }} </strong>
+          </span>
+          <button class="commnClass color" type="text" (click)="gotoLogin()"> Log in
+          </button>
+          <button class="sign-up" type="text" (click)="gotoRegister()"> Sign up
+          </button>
+          <button class="commnClass"><i class="bi bi-globe"></i></button>
+        </div>
+        <!------------------------------------------ User Accessible Menu --------------------------------------->
+        <div class="loginArea" *ngIf="this.commonService.authRole() === 'User'">
+          <span class="cart" (click)="goToCart()"><i class="bi bi-cart2"></i>
+            <strong *ngIf="dataSource.getCartCourse().length > 0"> {{dataSource.cartCount | async }} </strong>
+          </span>
+          <button class="learningBtn">My Learning</button>
+          <button matButton class="displayShortName" [matMenuTriggerFor]="menu">{{ commonService.user() }}</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="gotoProfile()">User Page</button>
+            <button mat-menu-item (click)="logout()">Logout</button>
+          </mat-menu>
+        </div>
+        <!--------------------------------------- Admin Accessible Menu --------------------------------------->
+        <div class="loginArea" *ngIf="this.commonService.authRole() === 'Admin'">
+          <span class="cart" (click)="goToCart()"><i class="bi bi-cart2"></i>
+            <strong *ngIf="dataSource.getCartCourse().length > 0"> {{dataSource.cartCount | async }} </strong>
+          </span>
+          <button matButton class="learningBtn admin" [matMenuTriggerFor]="courseMenu">Manage Course
+            <mat-icon>arrow_drop_down</mat-icon></button>
+          <mat-menu #courseMenu="matMenu">
+            <ul class="dropdown-menu1">
+              <li><a routerLink="/admin/add-course">Add Course</a></li>
+              <li><a routerLink="/admin/course-list">Course List</a></li>
+            </ul>
+          </mat-menu>
+          <button matButton class="learningBtn admin" [matMenuTriggerFor]="categoryMenu">Features
+            <mat-icon>arrow_drop_down</mat-icon></button>
+          <mat-menu #categoryMenu="matMenu">
+            <ul class="dropdown-menu1">
+              <li><a routerLink="/admin/add-category">Add Category</a></li>
+              <li><a routerLink="/admin/add-home-slider">Add Home Slider</a></li>
+              <li><a routerLink="/admin/country-state">Manage Country State</a></li>
+            </ul>
+          </mat-menu>
+          <!-- Short Profile Area -->
+          <button matButton class="displayShortName" [matMenuTriggerFor]="menu">{{ commonService.user() }}</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="gotoAdmin()">Profile</button>
+            <button mat-menu-item (click)="logout()">Logout</button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <img class="navbar-brand" src="logo-udemy.svg" alt="Udemy Logo" /> 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+      aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Explore</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Learning Paths</a>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Link
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="#" tabindex="-1" aria-disabled="false">Udemy Business</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" tabindex="-1" aria-disabled="false">Tech on Udemy</a>
+        </li> 
+      </ul>
+      <div class="searchBar">
+        <form class="d-flex"> 
+          <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+          <button class="commnClass color" type="submit">Search</button>
+        </form>
+      </div>
+      <div class="loginArea">
+        <span class="cart"><i class="bi bi-cart2"></i></span>
+        <button class="commnClass color" type="text"> Log in </button>
+        <button class="sign-up" type="text"> Sign up </button>
+        <button class="commnClass"><i class="bi bi-globe"></i></button>
+      </div>
+    </div>
+  </div>
+</nav>  -->

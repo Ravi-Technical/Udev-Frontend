@@ -1,0 +1,38 @@
+.course-thumb {
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.order-summary {
+  position: sticky;
+  top: 90px;
+}
+
+button {
+    background-color: #5f1ebd !important;
+    box-shadow: none !important;
+    color: #fff !important;
+}
+
+h4.payment-title {
+    font-size: 16px;
+    color: #222;
+}
+
+button#payBtn {
+    width: 200px;
+    border: none;
+    padding: 9px 0px;
+    border-radius: 2px;
+    margin: 0 0 0 5px;
+}
+
+
+/* Mobile & Tablet */
+@media (max-width: 991px) {
+  .order-summary {
+    position: static;
+  }
+}

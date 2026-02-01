@@ -1,0 +1,227 @@
+@use '../../common/common-style.scss' as *;
+
+.container-fuild {
+  box-shadow: 0 6px 12px rgba(30, 10, 58, .04);
+}
+
+section.wraper-header {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgb(46 38 38 / 10%);
+}
+
+span.cart strong {
+  background: #5f1ebd;
+  color: #fff;
+  padding: 5px;
+  border-radius: 50%;
+  position: absolute;
+  line-height: 9px;
+  font-size: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  transform: translate(-2rem, 0px);
+}
+
+.navbar-brand {
+  width: 100px;
+}
+
+.searchBar {
+  width: 55%;
+}
+
+.navbar-nav {
+  margin-left: 2rem;
+}
+
+li.nav-item a {
+  font-size: 14px;
+  color: $primary-text-color;
+}
+
+.active {
+  color: $primary-text-color2 !important;
+  font-weight: $primary-text-font-weight;
+}
+
+.sign-up {
+  margin: 0 20px 0 20px;
+  background-color: $primary-background-color;
+  padding: $primary-padding;
+  color: $primary-text-color3;
+  border: $primary-button-border;
+  border-radius: $primary-border-radius;
+}
+
+.color {
+  color: $primary-text-color2;
+}
+
+.commnClass {
+  border: $primary-button-border;
+  padding: $primary-padding;
+  border-radius: $primary-border-radius;
+}
+
+.cart {
+  cursor: pointer;
+}
+
+span.cart i {
+  font-size: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.displayShortName {
+  padding: 10px;
+  margin-left: 1rem;
+  width: 35px;
+  font-size: 14px;
+  height: 35px;
+  border-radius: 50%;
+  background: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 2px;
+  font-weight: 500;
+  position: relative;
+}
+
+.loginArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+
+.displayShortName::after {
+  position: absolute;
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #a435f0;
+  border-radius: 50%;
+  top: 0;
+  left: 1.5rem;
+}
+
+button.learningBtn:hover {
+  background: #dddddd9c;
+  transition: 0.3s ease;
+  border-radius: 2px;
+  padding: 10px 20px;
+}
+
+button.learningBtn {
+  background-color: transparent;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.loginArea mat-icon {
+  line-height: 39px;
+  color: #555;
+  font-size: 20px;
+  position: relative;
+  right: 5px;
+}
+
+.loginArea.admin:hover {
+  padding: 0px;
+}
+
+.displayShortName {
+  cursor: pointer;
+}
+
+.admin {
+  padding: 0px 0px 6px 6px !important;
+  margin: 0 0px 0 0px;
+  font-size: 12px !important;
+}
+
+.drowpDown {
+  display: none;
+  position: absolute;
+  top: 40px;
+  /* adjust based on your design */
+  right: 0;
+  background-color: #fff;
+  min-width: 150px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  z-index: 10;
+}
+
+/* Show dropdown on hover */
+.displayShortName:hover .drowpDown {
+  display: block;
+}
+
+/* Dropdown items */
+.dropDown ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.dropDown ul li a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.dropDown ul li a:hover {
+  background-color: #f2f2f2;
+}
+
+.loginArea li a {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.loginArea ul li {
+  display: inline-block;
+}
+
+.loginArea ul {
+  margin: 0;
+  padding: 0;
+}
+
+.loginArea ul li a {
+  color: #333;
+  font-size: 12px;
+}
+
+ul.dropdown-menu1 li a {
+  font-size: 12px;
+  color: #222;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+ul.dropdown-menu1 li {
+  list-style: none;
+  line-height: 1.8rem;
+}
+
+ul.dropdown-menu1 {
+  margin: 0;
+  padding: 0 10px;
+}

@@ -1,0 +1,142 @@
+<section class="course_wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <form [formGroup]="addCourseForm" (ngSubmit)="onSubmit()" class="course-form">
+                    <mat-card>
+                        <mat-card-title *ngIf="!isEditMode" class="title-wrap">
+                            <span>📚 Add Course</span>
+                            <button class="addCourse" (click)="ListCourse()">Course List</button>
+                        </mat-card-title>
+                        <mat-card-title *ngIf="isEditMode" class="title-wrap">
+                            <span>📚 Update Course</span>
+                            <button class="addCourse" (click)="AddCourse()">Add Course</button>
+                        </mat-card-title>
+                        <div class="form-row">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Title</mat-label>
+                                <input matInput formControlName="title" placeholder="Enter course title">
+                                <mat-error *ngIf="addCourseForm.get('title')?.hasError('required')">Title is
+                                    required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Description</mat-label>
+                                <textarea matInput formControlName="description"
+                                    placeholder="Enter description"></textarea>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="form-row border-bottom">
+                            <span>Upload Course Video</span>
+                            <input type="file" (change)="onSelectVideo($event)" />
+                            <mat-form-field appearance="outline">
+                                <mat-label>Course Video Url</mat-label>
+                                <input matInput formControlName="courseVideo" placeholder="Video URL">
+                            </mat-form-field>
+                        </div>
+                        <div class="form-row">
+                            <span>Upload Course Image</span>
+                            <input type="file" #imageFileInput (change)="onSelectImage($event)" />
+                            <mat-form-field appearance="outline">
+                                <mat-label>Thumbnail Image Url</mat-label>
+                                <input matInput formControlName="thumbnailImage" placeholder="Thumbnail URL">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="form-row">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Category</mat-label>
+                                <mat-select formControlName="categoryId" placeholder="Select Category">
+                                    <mat-option *ngFor="let cat of wholeCategories" [value]="cat.id">
+                                        {{ cat.categoryName }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Price</mat-label>
+                                <input type="text" matInput formControlName="price" placeholder="Enter price">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="form-row">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Course Code</mat-label>
+                                <input type="text" matInput formControlName="courseCode"
+                                    placeholder="Enter course code">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Level</mat-label>
+                                <mat-select formControlName="level" placeholder="Select Level">
+                                    <mat-option *ngFor="let level of levels" [value]="level">
+                                        {{ level }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Language</mat-label>
+                                <mat-select formControlName="language" placeholder="Select Language">
+                                    <mat-option *ngFor="let lang of languages" [value]="lang">
+                                        {{ lang }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="form-row">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Total Hours</mat-label>
+                                <input type="text" matInput formControlName="totalHours"
+                                    placeholder="Enter total hours">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Instructors</mat-label>
+                                <input matInput formControlName="instructors" placeholder="Instructor name">
+                            </mat-form-field>
+                        </div>
+                        <div class="mb-4">
+                            <div class="editor-wrapper">
+                                <label>Course Content</label>
+                                <ngx-editor-menu [editor]="editor"></ngx-editor-menu>
+                                <ngx-editor [editor]="editor" formControlName="courseContent"
+                                    placeholder="Write your content here..."></ngx-editor>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <mat-checkbox formControlName="isFeatured">Featured Course</mat-checkbox>
+                            <mat-checkbox formControlName="certificateAvailable">Certificate Available</mat-checkbox>
+                            <mat-checkbox formControlName="status">Active</mat-checkbox>
+                            <div class="rating">
+                                <div role="radiogroup" aria-label="Star Rating" class="star-rating">
+                                    <span>Rating :</span>
+                                    <ng-container
+                                        *ngFor="let star of [].constructor(stars); let i=index;trackBy: trackByIndex">
+                                        <span id="rating + 'i'" role="radio" tabindex="0"
+                                            [attr.aria-checked]="rating()===i+1" (mouseenter)="setHover(i + 1)"
+                                            (mouseleave)="setHover(0)" (click)="setRating(i+1)"
+                                            [ngClass]="{filled: i + 1 <= (hoverd() || rating() || editRating)}">
+                                            <mat-icon>{{i + 1 <= (hoverd() || rating() || editRating) ? 'star'
+                                                    : 'star_border' }}</mat-icon>
+                                        </span>
+                                    </ng-container>
+                                    : {{ isEditMode ? editRating : rating() }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="update" *ngIf="isEditMode" mat-raised-button color="primary" type="submit"
+                                [disabled]="addCourseForm.invalid">Update Course</button>
+                            <button *ngIf="!isEditMode" mat-raised-button color="primary" type="submit"
+                                [disabled]="addCourseForm.invalid">Add Course</button>
+                            <button mat-stroked-button color="warn" type="button" (click)="onReset()">Reset</button>
+                        </div>
+                    </mat-card>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</section>

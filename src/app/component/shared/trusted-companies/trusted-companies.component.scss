@@ -1,0 +1,47 @@
+.trusted-companies {
+  background: #f7f9fa;            /* soft Udemy gray */
+  padding: 40px 16px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.trusted-title {
+  font-size: 14px;
+  color: #6a6f73;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.logo-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  animation: scroll 25s linear infinite;
+}
+
+.track img {
+  height: 32px;
+  opacity: 0.7;
+  filter: grayscale(100%);
+  transition: 0.2s ease;
+}
+
+.track img:hover {
+  opacity: 1;
+  filter: none;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

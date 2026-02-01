@@ -1,0 +1,97 @@
+/* You can add global styles to this file, and also import other style files */
+ 
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+.app-content{
+    margin-top: 4rem;
+}
+.text-success {
+    background-color: #d1eaed;
+    padding: 4px;
+    color: #222 !important;
+}
+
+img.img-wrap {
+    width: 40px;
+    border: 1px solid #ddd;
+    padding: 2px;
+}
+
+.success-snackbar {
+    background-color: #4caf50 !important;
+    color: white;
+    font-weight: bold;
+}
+
+.error-snackbar {
+    background-color: #f44336 !important;
+    color: white;
+    font-weight: bold;
+}
+
+.error-snackbar span.mdc-button__label {
+    background-color: #4f5053;
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+    color: #e28800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-snackbar span.mdc-button__label {
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button.mat-mdc-snack-bar-action.mdc-snackbar__action.mdc-button.mat-mdc-button.mat-unthemed.mat-mdc-button-base {
+    background-color: #6a2ac3;
+}
+
+.success-dialog .mdc-button__label {
+    color: #fff !important;
+}
+
+.mat-mdc-dialog-surface.mdc-dialog__surface {
+    border-radius: 2px !important;
+    padding: 0;
+}
+
+.error-snackbar button:hover {
+    background-color: transparent;
+}
+
+.p-carousel-item {
+    flex: initial !important;
+}
+
+.p-galleria-item-prev,
+.p-galleria-item-next {
+  background: rgba(0,0,0,0.6);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
