@@ -24,7 +24,7 @@ export class AuthServiceService {
 
   // ********************** Udemy User Login Service Method ********************** //
   udemyUserLogin(userData: IULogin): Observable<any> {
-    if (userData.email == 'ravis3682@gmail.com') {
+    if (userData.email === 'ravis3682@gmail.com') {
       userData.role = "Admin"
     } else {
       userData.role = "User"

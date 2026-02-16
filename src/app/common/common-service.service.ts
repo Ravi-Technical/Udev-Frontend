@@ -1,9 +1,6 @@
 import { Inject, inject, Injectable, PLATFORM_ID, signal, } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
-import { Observable } from 'rxjs';
-import { mergeMap, map, single } from 'rxjs/operators';
-
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +14,7 @@ export class CommonServiceService {
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
     // auto restore token if present
     if (this.isBrowser()) {
-      const token = JSON.parse(localStorage.getItem('Token')!);
+      const token = localStorage.getItem('Token');
       const role = JSON.parse(localStorage.getItem('Role')!);
       if (token && role) { 
         this._isLoggedIn.set(true);

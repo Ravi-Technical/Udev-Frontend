@@ -153,7 +153,6 @@ export class AddCourseComponent implements OnInit, OnDestroy {
   }
   // Add Course Here
   onSubmit() {
-    debugger
     this.addCourseForm.value.ratings = this.rating();
     const formData = this.addCourseForm.value;
     if (this.isEditMode && this.currentCourseId) {

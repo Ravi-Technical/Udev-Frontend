@@ -66,30 +66,6 @@ export const globalInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
           dialog.open(SuccessDialogComponent, { width: '500px', data: { title: "Unexpected error", message: "Unexpected error occurred.",  type:"error" } });
           break;
       }
-      // if (err.status === 401) {
-      //   const dailogRef = dialog.open(SuccessDialogComponent, {
-      //     width: '500px',
-      //     data: { title: "Not found!", message: 'Something went wrong. Please login again.' }
-      //   });
-      //   dailogRef.afterClosed().subscribe((res) => {
-      //     localStorage.clear();
-      //     common$.clearToken();
-      //     router.navigate(['/udemy/login']);
-      //   })
-      // } else if (err.status === 500) {
-      //   dialog.open(SuccessDialogComponent, {
-      //     width: '500px',
-      //     data: { title: "Server error", message: 'Server error, please try again later!' }
-      //   });
-      // } else if (err.status === 0) {
-      //   dialog.open(SuccessDialogComponent, {
-      //     width: '500px',
-      //     data: { title: "Server error", message: 'Server error, please try again later!' }
-      //   });
-      // }
-      // else {
-      //   router.navigate(['/home']);
-      // }
       return throwError(() => err);
     }),
     finalize(() => loader.hide())

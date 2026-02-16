@@ -17,12 +17,12 @@ import { ICourseModel } from '../../../@core/models/commonModel';
 export class CourseDetailsComponent implements OnInit {
   currentId: any;
   currentCourseTitle: string | null = null;
-  course:any;
+  course: any;
   categoryTitle: string | null = null;
   stars = Array(5).fill(0);
-  courseFlag:boolean = false;
+  courseFlag: boolean = false;
 
-  constructor(private dataSource: SharedServiceService, private activeRoute: ActivatedRoute, private router:Router) { }
+  constructor(private dataSource: SharedServiceService, private activeRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe((res) => {
@@ -31,35 +31,42 @@ export class CourseDetailsComponent implements OnInit {
       this.currentCourseTitle = this.currentCourseTitle ? this.currentCourseTitle.split(' ').join(" ").replaceAll("-", ' ') : '';
       this.getSingleUdevCourseById();
     });
- } // END OnInIt();
-   // Get Single Course Method Implementation
-  getSingleUdevCourseById(){
+  } // END OnInIt();
+  // Get Single Course Method Implementation
+  getSingleUdevCourseById() {
     this.courseFlagUpdate();
-    this.dataSource.udevGetSingleCourseById(this.currentId).pipe(
-      switchMap((course: any) =>
-        this.dataSource.UdevGetSingleCategryById(course.data.categoryId).pipe(
-          map((category: any) => ({ course, category }))
-        )
-      )
-    ).subscribe(({ course, category }) => { 
-      this.course = course.data ? course.data : [];
-      this.categoryTitle = category.data.categoryName ? category.data.categoryName: '';
-    })
+    this.dataSource.udevGetSingleCourseById(this.currentId).subscribe({
+      next:(result)=>{
+        this.course = result.data ? result.data : [];
+      },
+      error:(error)=>{}
+    });
+    // this.dataSource.udevGetSingleCourseById(this.currentId).pipe(
+    //   switchMap((course: any) =>
+    //     this.dataSource.UdevGetSingleCategryById(course.data.categoryId).pipe(
+    //       map((category: any) => ({ course, category }))
+    //     )
+    //   )
+    // ).subscribe(({ course, category }) => {
+    //   this.course = course.data ? course.data : [];
+    //   this.categoryTitle = category.data.categoryName ? category.data.categoryName : '';
+    // })
+
   }
   // Course Flag Update
-  courseFlagUpdate(){
-     this.courseFlag = this.dataSource.getCartCourse().some(c=>c.id===this.currentId);
+  courseFlagUpdate() {
+    this.courseFlag = this.dataSource.getCartCourse().some(c => c.id === this.currentId);
   }
   // Add to Cart
-  addToCart(item:ICourseModel){
-     this.dataSource.addToCartCourse(item);
-     this.courseFlagUpdate();
+  addToCart(item: ICourseModel) {
+    this.dataSource.addToCartCourse(item);
+    this.courseFlagUpdate();
   }
   // Goto Cart
-  goToCart(){
+  goToCart() {
     this.router.navigate(['/udemy/cart']);
   }
-  goToCheckOut(){
+  goToCheckOut() {
     this.router.navigate(['/udemy/checkout']);
   }
 

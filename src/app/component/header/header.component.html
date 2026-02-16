@@ -39,7 +39,7 @@
 
       <div class="col-lg-3">
         <!------------------------------------------ Default Accessible Menu --------------------------------------->
-        <div class="loginArea" *ngIf="!this.commonService.isLoggedIn()">
+        <div class="loginArea" *ngIf="!commonService.isLoggedIn()">
           <span class="cart" (click)="goToCart()"><i class="bi bi-cart2"></i>
             <strong *ngIf="dataSource.getCartCourse().length > 0"> {{dataSource.cartCount | async }} </strong>
           </span>
@@ -50,7 +50,7 @@
           <button class="commnClass"><i class="bi bi-globe"></i></button>
         </div>
         <!------------------------------------------ User Accessible Menu --------------------------------------->
-        <div class="loginArea" *ngIf="this.commonService.authRole() === 'User'">
+        <div class="loginArea" *ngIf="commonService.authRole() === 'User'">
           <span class="cart" (click)="goToCart()"><i class="bi bi-cart2"></i>
             <strong *ngIf="dataSource.getCartCourse().length > 0"> {{dataSource.cartCount | async }} </strong>
           </span>
@@ -62,7 +62,7 @@
           </mat-menu>
         </div>
         <!--------------------------------------- Admin Accessible Menu --------------------------------------->
-        <div class="loginArea" *ngIf="this.commonService.authRole() === 'Admin'">
+        <div class="loginArea" *ngIf="commonService.authRole() === 'Admin'">
           <span class="cart" (click)="goToCart()"><i class="bi bi-cart2"></i>
             <strong *ngIf="dataSource.getCartCourse().length > 0"> {{dataSource.cartCount | async }} </strong>
           </span>

@@ -46,8 +46,8 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.queryParams.subscribe(params => {
       if (params['keyword']) {
-        this.keyword = params['keyword'];
-        this.pageNumber = Number(params['p'] || 1);
+        this.keyword = params['keyword']; // Cloud
+        this.pageNumber = Number(params['p'] || 1); // 1
         this.searchCourseByKeyword();
       }
     });
@@ -62,8 +62,8 @@ export class SearchComponent implements OnInit {
   // Search Course by keyword
   searchCourseByKeyword() {
     let filters = {};
-    if(this.filterData){
-        filters = {
+    if (this.filterData) {
+      filters = {
         Level: this.filterData.Level ?? [],
         Language: this.filterData.Language ?? [],
         Rating: this.filterData.Rating ?? [],
@@ -71,20 +71,20 @@ export class SearchComponent implements OnInit {
         VideoLength: this.filterData.VideoLength ?? []
       }
     }
-    const payload:CourseSearchRequest = {
+    const payload: CourseSearchRequest = {
       Keyword: this.keyword,
       Page: this.pageNumber,
-      PageSize: this.pageSize,   
+      PageSize: this.pageSize,
     };
-    if(this.filterData && this.hasAnyFilter(this.filterData)){
-        payload.Filters = filters
-    } 
+    if (this.filterData && this.hasAnyFilter(this.filterData)) {
+      payload.Filters = filters
+    }
     this.dataSource.courseSearch(payload).subscribe({
       next: (res) => {
         if (res.results) {
           this.searchResultCourse = res.results;
           this.totalCount = res.count;
-          this.totalPages = Math.ceil(this.totalCount / this.pageSize);
+          this.totalPages = Math.ceil(this.totalCount / this.pageSize); // 1.877 = 2 
           this.updatePagination();
         }
       },
@@ -136,9 +136,9 @@ export class SearchComponent implements OnInit {
   goToCart() {
     this.router.navigate(['/udemy/cart']);
   }
-    // Check has any data available
+  // Check has any data available
   private hasAnyFilter(data: IFilterModel): boolean {
-  return Object.values(data).some(v => (v ?? []).length > 0);
-}
+    return Object.values(data).some(v => (v ?? []).length > 0);
+  }
 
 }
